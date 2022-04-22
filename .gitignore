@@ -1,0 +1,4 @@
+dist
+.venv
+build
+colorize_cli.egg-info
