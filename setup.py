@@ -18,13 +18,16 @@ def read_requirements(file):
 try:
     read_requirements('requirements.txt')
 except FileNotFoundError:
-    read_requirements('colorize_cli.egg-info/requires.txt')
+    try:
+        read_requirements('colorize_cli.egg-info/requires.txt')
+    except FileNotFoundError:
+        pass
 
 with open("README.rst", "r") as fh:
     long_description = fh.read()
 
 setup(name='colorize-cli',
-      version='0.0',
+      version='0.1',
       license='MIT',
       description='Highlight matched strings in a text',
       long_description=long_description,
@@ -32,7 +35,7 @@ setup(name='colorize-cli',
       author='Aleksandr Vinokurov',
       author_email="aleksandr.vin@gmail.com",
       url='https://github.com/aleksandr-vin/colorize',
-      download_url = 'https://github.com/aleksandr-vin/colorize/archive/v0.0.tar.gz',
+      download_url = 'https://github.com/aleksandr-vin/colorize/archive/v0.1.tar.gz',
       keywords = ['cat', 'colors', 'terminal', 'console', 'logs', 'ascii', 'regex', 'cli'],
       packages=['colorize'],
       install_requires=REQUIRES,
